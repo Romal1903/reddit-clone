@@ -446,3 +446,17 @@ This project serves as a strong demonstration of full-stack Java development ski
 *Posta — Simple. Post-centric. Global.*
 
 **Deploy URL:** [Posta — RedditClone](https://reddit-clone-nine.vercel.app)
+
+---
+
+## 📸 Screenshots
+
+**Signup Page:** [Create new Account](screenshots/Signup%20Page.png)
+
+**Login Page:** [Login to Existing Account](screenshots/Login%20Page.png)
+
+**Home Page:** [Home Feed with Posts](screenshots/Home%20Feed.png)
+
+**Post Detail Page:** [Post Detail with Nested Comments](screenshots/Post%20Detail.png)
+
+**Create Post Page:** [Create Post with Image Upload](screenshots/Create%20Post.png)
