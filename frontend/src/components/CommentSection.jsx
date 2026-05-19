@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/axios';
+import { useEffect, useState, useCallback } from 'react';
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
@@ -184,7 +185,7 @@ export default function CommentSection({ postId }) {
   const [error, setError] = useState('');
   const [totalCount, setTotalCount] = useState(0);
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       const res = await api.get(`/posts/${postId}/comments`);
       setComments(res.data);
@@ -197,11 +198,11 @@ export default function CommentSection({ postId }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [postId]);
 
   useEffect(() => {
     fetchComments();
-  }, [postId]);
+  }, [fetchComments, postId]);
 
   const handleSubmitComment = async () => {
     if (!newComment.trim()) return;

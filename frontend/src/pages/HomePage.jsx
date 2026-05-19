@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../api/axios';
 import PostCard from '../components/PostCard';
 import SortBar from '../components/SortBar';
+import { useEffect, useState, useCallback } from 'react';
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -11,7 +12,7 @@ export default function HomePage() {
   const [error, setError] = useState('');
   const [sort, setSort] = useState('new');
 
-  const fetchPosts = async (sortType) => {
+  const fetchPosts = useCallback(async (sortType) => {
     setLoading(true);
     setError('');
     try {
@@ -22,12 +23,15 @@ export default function HomePage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     api.get('/communities').then((res) => setCommunities(res.data.slice(0, 8)));
-    fetchPosts(sort);
   }, []);
+
+  useEffect(() => {
+    fetchPosts(sort);
+  }, [sort]);
 
   const handleSortChange = (newSort) => {
     setSort(newSort);
