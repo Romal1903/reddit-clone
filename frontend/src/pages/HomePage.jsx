@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/axios';
 import PostCard from '../components/PostCard';
 import SortBar from '../components/SortBar';
-import { useEffect, useState, useCallback } from 'react';
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
